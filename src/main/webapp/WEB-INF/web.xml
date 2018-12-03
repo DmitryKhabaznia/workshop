@@ -1,0 +1,97 @@
+<web-app
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+        id="Your_WebApp_ID"
+        version="2.5">
+
+    <listener>
+        <listener-class>workshop.listener.ContextListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>captchaStoringStrategy</param-name>
+        <param-value>cookie</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>timeout</param-name>
+        <param-value>300</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>cookieExpiringTime</param-name>
+        <param-value>3600</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>imageDirectoryPath</param-name>
+        <param-value>/images</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>securityFile</param-name>
+        <param-value>security.xml</param-value>
+    </context-param>
+
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/WEB-INF/jsp/error_page.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/404_error_page.jsp</location>
+    </error-page>
+
+    <filter>
+        <filter-name>Localization Filter</filter-name>
+        <filter-class>workshop.filter.LocaleFilter</filter-class>
+        <init-param>
+            <param-name>defaultLocale</param-name>
+            <param-value>en</param-value>
+        </init-param>
+        <init-param>
+            <param-name>locales</param-name>
+            <param-value>ru,en</param-value>
+        </init-param>
+        <init-param>
+            <param-name>storingStrategy</param-name>
+            <param-value>session</param-value>
+        </init-param>
+    </filter>
+    <filter>
+        <filter-name>Gzip Filter</filter-name>
+        <filter-class>workshop.filter.GZipFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>Cache Filter</filter-name>
+        <filter-class>workshop.filter.NoCacheFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>Security Filter</filter-name>
+        <filter-class>workshop.filter.SecurityFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>Security Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Localization Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Gzip Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Cache Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+
+</web-app>

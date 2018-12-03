@@ -1,0 +1,10 @@
+<SecurityBean>
+    <constraint>
+        <url-pattern>/shop/order.*</url-pattern>
+        <role>user</role >
+    </constraint>
+    <constraint>
+        <url-pattern>/shop/admin.*</url-pattern>
+        <role>admin</role >
+    </constraint>
+</SecurityBean>
