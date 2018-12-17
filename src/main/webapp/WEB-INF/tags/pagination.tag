@@ -1,7 +1,7 @@
 <%@ tag pageEncoding="UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix = "ct" %>
-<%@ attribute name="filterBean" type="com.epam.bean.FilterFormBean" required="true" %>
+<%@ attribute name="filterBean" type="workshop.bean.FilterFormBean" required="true" %>
 <%@ attribute name="lastPage" required="true" %>
 
 <center>
