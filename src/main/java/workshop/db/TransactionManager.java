@@ -68,6 +68,7 @@ public class TransactionManager {
         if (con != null) {
             try {
                 con.close();
+                System.out.println("sdfsdfs");
             } catch (SQLException ex) {
                 LOG.error(CANNOT_CLOSE_CONNECTION, ex);
             }

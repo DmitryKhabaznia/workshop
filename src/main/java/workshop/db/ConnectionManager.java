@@ -41,11 +41,16 @@ public class ConnectionManager {
             String username = dbUri.getUserInfo().split(":")[0];
             String password = dbUri.getUserInfo().split(":")[1];
             String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+            helloWorld();
             return DriverManager.getConnection(dbUrl, username, password);
         } catch (URISyntaxException | SQLException ex) {
             LOG.error(CANNOT_GET_CONNECTION_ERROR_MESSAGE);
         }
         return null;
+    }
+
+    public void helloWorld(){
+        System.out.println("hello world");
     }
 
     /**
